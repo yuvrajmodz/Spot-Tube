@@ -15,10 +15,10 @@ Spot-Tube is a web application built with Flask that allows users to download Sp
 Make sure you have Python 3.6+ installed on your system.
 
 ### Step 1: Clone the repository
-```bash
-git clone https://github.com/yourusername/Spot-Tube.git
-cd Spot-Tube
 ```
+git clone https://github.com/yourusername/Spot-Tube.git
+```
+cd Spot-Tube
 
 ### DEVELOPER INFO
 ╔══════════════════════════════════╗
