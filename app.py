@@ -58,15 +58,36 @@ def home():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Spot-Tube</title>
+    <title>Spot-Tube Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#EC4899',
+                        accent: '#8B5CF6',
+                        background: '#F3F4F6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-        .fade-in {
-            animation: fadeIn 1s ease;
+    </script>
+    <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gradient-bg {
+            background: linear-gradient(-45deg, #6366F1, #EC4899, #8B5CF6, #10B981);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
         }
         .floating-label {
             transition: all 0.3s ease;
@@ -79,66 +100,89 @@ def home():
             transform: translateY(-50%) scale(0.85);
             background-color: white;
             padding: 0 4px;
-            color: #10B981;
+            color: #6366F1;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
-    <button id="menuToggle" class="fixed top-5 right-5 z-50 text-2xl bg-green-500 text-white p-2 rounded-full shadow-lg hover:bg-green-600 transition-colors duration-300">☰</button>
+<body class="bg-background font-sans text-gray-800">
+    <div class="fixed top-0 left-0 w-full h-1 gradient-bg"></div>
     
-    <div id="sidebar" class="fixed top-0 right-0 w-3/4 md:w-1/3 h-full bg-green-500 text-white p-6 shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-40">
-        <button id="closeSidebar" class="absolute top-4 right-4 text-2xl hover:text-gray-200 transition-colors duration-300">&times;</button>
-        <nav class="flex flex-col space-y-4 mt-12">
-            <a href="https://t.me/matrix_env" class="bg-white text-green-500 py-2 px-4 rounded-lg text-center font-semibold hover:bg-gray-100 transition-colors duration-300">JOIN TELEGRAM CHANNEL</a>
-            <a href="https://t.me/vzr7x" class="bg-white text-green-500 py-2 px-4 rounded-lg text-center font-semibold hover:bg-gray-100 transition-colors duration-300">CONTACT</a>
+    <button id="menuToggle" class="fixed top-5 right-5 z-50 bg-white text-primary p-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+    
+    <div id="sidebar" class="fixed top-0 right-0 w-3/4 md:w-1/3 h-full bg-white text-gray-800 p-6 shadow-2xl transform translate-x-full transition-transform duration-500 ease-in-out z-40">
+        <nav class="flex flex-col space-y-4 mt-16">
+            <a href="https://t.me/matrix_env" class="bg-primary text-white py-3 px-6 rounded-lg text-center font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-md">JOIN TELEGRAM CHANNEL</a>
+            <a href="https://t.me/vzr7x" class="bg-secondary text-white py-3 px-6 rounded-lg text-center font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-md">CONTACT</a>
         </nav>
     </div>
 
-    <div class="min-h-screen flex justify-center items-center p-4">
-        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full fade-in">
-            <h1 class="text-3xl font-bold text-center text-green-500 mb-6">Spot-Tube</h1>
-            <form id="spotify-form">
-                <div class="relative mb-4">
-                    <input type="url" id="url" name="url" placeholder=" " required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 peer">
-                    <label for="url" class="floating-label absolute left-3 text-gray-500 pointer-events-none">Enter Spotify URL</label>
+    <div class="min-h-screen flex justify-center items-center p-4 bg-gradient-to-br from-blue-50 to-pink-50">
+        <div class="bg-white p-8 rounded-3xl shadow-xl max-w-md w-full transform transition-all duration-500 hover:shadow-2xl">
+            <div class="flex items-center justify-center mb-8">
+                <svg class="w-12 h-12 text-primary mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+                <h1 class="text-4xl font-bold text-gray-800">Spot-Tube Pro</h1>
+            </div>
+            <form id="spotify-form" class="space-y-6">
+                <div class="relative">
+                    <input type="url" id="url" name="url" placeholder=" " required class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-primary transition-all duration-300 text-gray-800">
+                    <label for="url" class="floating-label absolute left-4 text-gray-500 pointer-events-none">Enter Spotify URL</label>
                 </div>
-                <button type="submit" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors duration-300">Proceed</button>
+                <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 shadow-lg">
+                    Download Playlist
+                </button>
             </form>
-            <div id="results" class="mt-4"></div>
+            <div id="results" class="mt-6"></div>
         </div>
     </div>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
         const mainContent = document.querySelector('.min-h-screen');
 
         function toggleSidebar() {
             sidebar.classList.toggle('translate-x-full');
-            if (!sidebar.classList.contains('translate-x-full')) {
-                mainContent.style.transform = 'translateX(-16.66%)';
-            } else {
-                mainContent.style.transform = 'translateX(0)';
-            }
+            mainContent.classList.toggle('scale-95');
+            mainContent.classList.toggle('blur-sm');
         }
 
         menuToggle.addEventListener('click', toggleSidebar);
-        closeSidebar.addEventListener('click', toggleSidebar);
 
         document.getElementById('spotify-form').onsubmit = async function(event) {
             event.preventDefault();
             const form = event.target;
             const url = form.url.value;
             const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = '<div class="flex justify-center items-center space-x-2"><div class="w-2 h-2 bg-green-500 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-green-500 rounded-full animate-bounce" style="animation-delay: -0.3s"></div><div class="w-2 h-2 bg-green-500 rounded-full animate-bounce" style="animation-delay: -0.5s"></div></div>';
+            resultsDiv.innerHTML = `
+                <div class="flex justify-center items-center space-x-2 py-4">
+                    <div class="w-3 h-3 bg-primary rounded-full animate-bounce"></div>
+                    <div class="w-3 h-3 bg-secondary rounded-full animate-bounce" style="animation-delay: -0.3s"></div>
+                    <div class="w-3 h-3 bg-accent rounded-full animate-bounce" style="animation-delay: -0.5s"></div>
+                </div>
+            `;
 
             try {
                 const response = await fetch(`/spotify?url=${encodeURIComponent(url)}`);
                 const text = await response.text();
-                resultsDiv.innerHTML = text;
+                resultsDiv.innerHTML = `
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">RESULT</h3>
+                        <p class="text-gray-600">${text.replace(/Click to download:/g, '<span class="text-blue-500 font-medium">Click to download:</span>')}</p>
+                    </div>
+                `;
             } catch (error) {
-                resultsDiv.innerHTML = '<p class="text-red-500">Error fetching data. Please try again later.</p>';
+                resultsDiv.innerHTML = `
+                    <div class="bg-red-50 p-6 rounded-lg shadow-inner">
+                        <h3 class="text-lg font-semibold text-red-800 mb-2">Error:</h3>
+                        <p class="text-red-600">Unable to fetch data. Please try again later.</p>
+                    </div>
+                `;
             }
         };
     </script>
