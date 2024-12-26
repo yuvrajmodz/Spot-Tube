@@ -16,7 +16,7 @@ Make sure you have Python 3.6+ installed on your system.
 
 ### Step 1: Clone the repository
 ```
-git clone https://github.com/yourusername/Spot-Tube.git
+git clone https://github.com/yuvrajmodz/Spot-Tube.git
 
 cd Spot-Tube
 ```
