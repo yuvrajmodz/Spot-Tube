@@ -18,7 +18,7 @@ Make sure you have Python 3.6+ installed on your system.
 ```bash
 git clone https://github.com/yourusername/Spot-Tube.git
 cd Spot-Tube
-```bash
+```
 
 ### DEVELOPER INFO
 ╔══════════════════════════════════╗
